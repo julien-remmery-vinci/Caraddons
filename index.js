@@ -1,7 +1,20 @@
+//SOUNDS
 const chimeSound = new Sound({source:"chime-sound-effect.ogg"});
 const outroSound = new Sound({source:"outro-sound-effect.ogg"});
 
+//TEST
+register("command", () => {
+    clientShowTitle("Test", 30, chimeSound);
+}).setName("test", true);
+
 //FUNCTIONS
+/**
+ * Displays provided message on player's screen for provided duration and play provided sound
+ * @param {String} message The message to be displayed on screen
+ * @param {Number} duration Time to stay on screen
+ * @param {any} sound The sound to be played
+ * @returns {boolean} false if message is empty or duration is less or equal to 0
+ */
 function clientShowTitle(message, duration, sound){
     if(message === "" || duration <= 0) return false;
     setTimeout(() => {
@@ -10,50 +23,43 @@ function clientShowTitle(message, duration, sound){
     }, 1);
 }
 
-
-//TEST TRIGGER
-register("Chat", (event) => {
-        var formattedMessage = ChatLib.getChatMessage(event, true);
-        if(formattedMessage.includes("$TEST$")){
-            clientShowTitle("Test", 30, chimeSound);
-        }
-             
-    })
-
-register("Chat", (event) => {
-        var formattedMessage = ChatLib.getChatMessage(event, true);
-        if(formattedMessage.includes("$OUTRO$"))
-            clientShowTitle("Outro !", 30, outroSound);
-    })
-
-//Item drop
-register("Chat", (event) => {
-    var formattedMessage = ChatLib.getChatMessage(event, true);
-    if(formattedMessage.includes("&r&6&lRARE DROP! &r&5Deep Sea Orb &r")){
-        Client.showTitle("&5Deep Sea Orb","", 1, 30, 1);
-        ChatLib.command("pc RARE DROP! Deep Sea Orb");
+/**
+ * Description
+ * @param {any} rarity 
+ * @returns {any} Item rarity
+ */
+function getItemRarity(rarity){
+    switch(rarity[0]){
+        case 'f':
+            return "Common";
+        case 'a':
+            return "Uncommon";
+        case '9':
+            return "Rare";
+        case '5':
+            return "Epic";
+        case '6':
+            return "Legendary";
+        case 'd':
+            return "Mythic";
+        default:
+            return undefined;
     }
-})
-register("Chat", (event) => {
-    var formattedMessage = ChatLib.getChatMessage(event, true);
-    if(formattedMessage.includes("&r&6&lRARE DROP! &r&aLucky Hoof &r"))
-        ChatLib.command("pc RARE DROP! Lucky Hoof");
-})
-register("Chat", (event) => {
-    var formattedMessage = ChatLib.getChatMessage(event, true);
-    if(formattedMessage.includes("&r&6&lPET DROP! &r&9Flying Fish &r"))
-        ChatLib.command("pc Pet DROP! Rare Flying Fish");
-})
-register("Chat", (event) => {
-    var formattedMessage = ChatLib.getChatMessage(event, true);
-    if(formattedMessage.includes("&r&6&lPET DROP! &r&5Flying Fish &r"))
-        ChatLib.command("pc Pet DROP! Epic Flying Fish");
-})
-register("Chat", (event) => {
-    var formattedMessage = ChatLib.getChatMessage(event, true);
-    if(formattedMessage.includes("&r&6&lPET DROP! &r&6Flying Fish &r"))	
-        ChatLib.command("pc Pet DROP! Legendary Flying Fish");
-})
+}
+//ITEM DROP
+register("chat", (dropType, itemRarity, itemName, MFAmount) => {
+    if(itemRarity.substring(1)+itemName === "Deep Sea Orb"){
+        ChatLib.command(`pc ${dropType}! ${itemRarity.substring(1)+itemName} (+${MFAmount}% ✯ Magic Find)`);
+    }
+}).setChatCriteria("&r&6&l${dropType}! &r&${itemRarity}${itemName} &r&b(+&r&b${MFAmount}% &r&b✯ Magic Find&r&b)&r").setContains();
+
+//PET DROP GLOBAL CASE
+//Any pet drop will trigger this (not sure)(it should)(who knows ?)
+register("chat", (dropType, petRarity, petName, MFAmount) => {
+    if(dropType === "PET DROP"){
+        ChatLib.command(`pc ${dropType}! ${getItemRarity(petRarity)} ${petRarity.substring(1)+petName} (+${MFAmount}% ✯ Magic Find)`);
+    }
+}).setChatCriteria("&r&6&l${dropType}! &r&${petRarity}${petName} &r&b(+&r&b${MFAmount}% &r&b✯ Magic Find&r&b)&r").setContains();
 
 //TROPHY FISHES NOTIFICATION
 
@@ -67,7 +73,6 @@ register("Chat", (event) => {
             
         }
     })
-
 register("Chat", (event) => {
     var formattedMessage = ChatLib.getChatMessage(event, true);
     if(formattedMessage.includes("TROPHY FISH! You caught a Flyfish DIAMOND.")){	
@@ -300,7 +305,7 @@ register("Chat", (event) => {
     })
 register("Chat", (event) => {
     var formattedMessage = ChatLib.getChatMessage(event, true);
-    if(formattedMessage.includes("The APEX dragon is spawning!")){
+    if(formattedMessage.includes("&r&c&lThe &a&lAPEX &c&ldragon is spawning!&r")){
             setTimeout(() => {
                 Client.showTitle("&a&lAPEX &c&lDRAGON SPAWNING!","", 1, 30, 1);
 
