@@ -2,6 +2,16 @@
 const chimeSound = new Sound({source:"chime-sound-effect.ogg"});
 const outroSound = new Sound({source:"outro-sound-effect.ogg"});
 
+//LISTS OF DROPS TO NOTIFY
+const PETSDROP = {
+    "Baby Yeti": true,
+    "Flying Fish": true,
+    "Megalodon": true,
+}
+const ITEMSDROP = {
+    "Deep Sea Orb": true
+}
+
 //TEST
 register("command", () => {
     clientShowTitle("Test", 30, chimeSound);
@@ -48,7 +58,7 @@ function getItemRarity(rarity){
 }
 //ITEM DROP
 register("chat", (dropType, itemDrop, MFAmount) => {
-    if(itemDrop.substring(1) === "Deep Sea Orb"){
+    if(ITEMSDROP[itemDrop.substring(1)]){
         ChatLib.command(`pc ${dropType}! ${itemDrop.substring(1)} (+${MFAmount}% ✯ Magic Find)`);
     }
 }).setChatCriteria("&r&6&l${dropType}! &r&${itemDrop} &r&b(+&r&b${MFAmount}% &r&b✯ Magic Find&r&b)&r").setContains();
@@ -56,7 +66,7 @@ register("chat", (dropType, itemDrop, MFAmount) => {
 //PET DROP GLOBAL CASE
 //Any pet drop will trigger this (not sure)(it should)(who knows ?)
 register("chat", (dropType, petDrop, MFAmount) => {
-    if(dropType === "PET DROP"){
+    if(dropType === "PET DROP" && PETSDROP[petDrop.substring(1)]){
         ChatLib.command(`pc ${dropType}! ${getItemRarity(petDrop[0])} ${petDrop.substring(1)} (+${MFAmount}% ✯ Magic Find)`);
     }
 }).setChatCriteria("&r&6&l${dropType}! &r&${petDrop} &r&b(+&r&b${MFAmount}% &r&b✯ Magic Find&r&b)&r").setContains();
@@ -68,7 +78,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("&r&6&lTROPHY FISH! &r&bYou caught a &r&fBlobfish&r&r&r &r&l&r&b&lDIAMOND&r&b.&r")){
             setTimeout(() => {
                 Client.showTitle("&bDiamond &fBlobfish","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -78,7 +87,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Flyfish DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond &aFlyfish","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -89,7 +97,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("&r&6&lTROPHY FISH! &r&bYou caught a &r&6&lGolden Fish&r&r&r &r&l&r&b&lDIAMOND&r&b.&r")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond &6Golden Fish","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -100,7 +107,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Gusher DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond &fGusher","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -122,7 +128,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("&r&6&lTROPHY FISH! &r&bYou caught a &r&9Lavahorse&r&r&r &r&l&r&b&lDIAMOND&r&b.&r")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond &9Lavahorse","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -133,7 +138,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Mana Ray DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond&9 Mana Ray","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -144,7 +148,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Moldfin DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond &5Moldfin","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -155,7 +158,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Skeleton Fish DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond&5 Skeleton Fish","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -166,7 +168,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Slugfish DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond &aSlugfish","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -177,7 +178,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Soul Fish DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond &5Soul Fish","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -188,7 +188,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Steaming-Hot Flounder DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond &fSteaming-Hot Flounder","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -199,7 +198,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Sulphur Skitter DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond&f Sulphur Skitter","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -221,7 +219,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Volcanic Stonefish DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond &9Volcanic Stonefish","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -232,7 +229,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Obfuscated 1 DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond &fObfuscated 1","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -243,7 +239,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Obfuscated 2 DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond &aObfuscated 2","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
@@ -254,7 +249,6 @@ register("Chat", (event) => {
     if(formattedMessage.includes("TROPHY FISH! You caught a Obfuscated 3 DIAMOND.")){	
             setTimeout(() => {
                 Client.showTitle("&bDiamond &9Obfuscated 3","", 1, 30, 1);
-                outroSound.play();
             }, 1);
             
         }
