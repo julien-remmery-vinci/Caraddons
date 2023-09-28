@@ -19,7 +19,7 @@ function clientShowTitle(message, duration, sound){
     if(message === "" || duration <= 0) return false;
     setTimeout(() => {
         Client.showTitle(message, "", 1, duration, 1);
-        sound.play();
+        if(sound) sound.play();
     }, 1);
 }
 
