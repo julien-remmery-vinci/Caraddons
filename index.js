@@ -49,7 +49,7 @@ function getItemRarity(rarity){
 //ITEM DROP
 register("chat", (dropType, itemDrop, MFAmount) => {
     if(itemDrop.substring(1) === "Deep Sea Orb"){
-        ChatLib.command(`cc ${dropType}! ${itemDrop.substring(1)} (+${MFAmount}% ✯ Magic Find)`);
+        ChatLib.command(`pc ${dropType}! ${itemDrop.substring(1)} (+${MFAmount}% ✯ Magic Find)`);
     }
 }).setChatCriteria("&r&6&l${dropType}! &r&${itemDrop} &r&b(+&r&b${MFAmount}% &r&b✯ Magic Find&r&b)&r").setContains();
 
@@ -57,7 +57,7 @@ register("chat", (dropType, itemDrop, MFAmount) => {
 //Any pet drop will trigger this (not sure)(it should)(who knows ?)
 register("chat", (dropType, petDrop, MFAmount) => {
     if(dropType === "PET DROP"){
-        ChatLib.command(`cc ${dropType}! ${getItemRarity(petDrop[0])} ${petDrop.substring(1)} (+${MFAmount}% ✯ Magic Find)`);
+        ChatLib.command(`pc ${dropType}! ${getItemRarity(petDrop[0])} ${petDrop.substring(1)} (+${MFAmount}% ✯ Magic Find)`);
     }
 }).setChatCriteria("&r&6&l${dropType}! &r&${petDrop} &r&b(+&r&b${MFAmount}% &r&b✯ Magic Find&r&b)&r").setContains();
 
