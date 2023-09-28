@@ -29,7 +29,7 @@ function clientShowTitle(message, duration, sound){
  * @returns {any} Item rarity
  */
 function getItemRarity(rarity){
-    switch(rarity[0]){
+    switch(rarity){
         case 'f':
             return "Common";
         case 'a':
@@ -47,19 +47,19 @@ function getItemRarity(rarity){
     }
 }
 //ITEM DROP
-register("chat", (dropType, itemRarity, itemName, MFAmount) => {
-    if(itemRarity.substring(1)+itemName === "Deep Sea Orb"){
-        ChatLib.command(`pc ${dropType}! ${itemRarity.substring(1)+itemName} (+${MFAmount}% ✯ Magic Find)`);
+register("chat", (dropType, itemDrop, MFAmount) => {
+    if(itemDrop.substring(1) === "Deep Sea Orb"){
+        ChatLib.command(`cc ${dropType}! ${itemDrop.substring(1)} (+${MFAmount}% ✯ Magic Find)`);
     }
-}).setChatCriteria("&r&6&l${dropType}! &r&${itemRarity}${itemName} &r&b(+&r&b${MFAmount}% &r&b✯ Magic Find&r&b)&r").setContains();
+}).setChatCriteria("&r&6&l${dropType}! &r&${itemDrop} &r&b(+&r&b${MFAmount}% &r&b✯ Magic Find&r&b)&r").setContains();
 
 //PET DROP GLOBAL CASE
 //Any pet drop will trigger this (not sure)(it should)(who knows ?)
-register("chat", (dropType, petRarity, petName, MFAmount) => {
+register("chat", (dropType, petDrop, MFAmount) => {
     if(dropType === "PET DROP"){
-        ChatLib.command(`pc ${dropType}! ${getItemRarity(petRarity)} ${petRarity.substring(1)+petName} (+${MFAmount}% ✯ Magic Find)`);
+        ChatLib.command(`cc ${dropType}! ${getItemRarity(petDrop[0])} ${petDrop.substring(1)} (+${MFAmount}% ✯ Magic Find)`);
     }
-}).setChatCriteria("&r&6&l${dropType}! &r&${petRarity}${petName} &r&b(+&r&b${MFAmount}% &r&b✯ Magic Find&r&b)&r").setContains();
+}).setChatCriteria("&r&6&l${dropType}! &r&${petDrop} &r&b(+&r&b${MFAmount}% &r&b✯ Magic Find&r&b)&r").setContains();
 
 //TROPHY FISHES NOTIFICATION
 
