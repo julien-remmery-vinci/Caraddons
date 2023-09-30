@@ -12,16 +12,23 @@ const ITEMSDROP = {
     "Deep Sea Orb": true
 }
 const TROPHYDROP = {
+    "Blobfish": false,
     "Flyfish": true,
     "Golden Fish": true,
+    "Gusher": false,
     "Karate Fish": true,
+    "Lavahorse": false,
     "Mana Ray": true,
     "Moldfin": true,
     "Skeleton Fish": true,
     "Slugfish": true,
     "Soul Fish": true,
+    "Steaming-Hot Flounder": false,
+    "Sulphur Skitter": false,
     "Vanille": true,
     "Volcanic Stonefish": true,
+    "Obfuscated 1": false,
+    "Obfuscated 2": false,
     "Obfuscated 3": true
 }
 
@@ -40,6 +47,7 @@ register("command", () => {
  */
 function clientShowTitle(message, duration, sound){
     if(message === "" || duration <= 0) return false;
+    sound = sound ? sound : undefined;
     setTimeout(() => {
         Client.showTitle(message, "", 1, duration, 1);
         if(sound) sound.play();
@@ -89,6 +97,8 @@ register("chat", (dropType, petDrop, MFAmount) => {
 register("chat", (trophyFish, event) => {
     if(TROPHYDROP[trophyFish.substring(1)]){
         clientShowTitle("&bDiamond &"+trophyFish, 50, outroSound);
+    }else{
+        clientShowTitle("&bDiamond &"+trophyFish, 40);
     }
 }).setChatCriteria("&r&6&lTROPHY FISH! &r&bYou caught a &r&${trophyFish}&r&r&r &r&l&r&b&lDIAMOND&r&b.&r").setContains();
 
