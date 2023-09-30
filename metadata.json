@@ -2,6 +2,6 @@
     "name": "AnoDev",
     "creator": "AnonymeMousse",
     "description": "Chat trigger for hypixel skyblock",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "entry": "index.js"
   }
