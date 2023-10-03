@@ -1,0 +1,35 @@
+
+[item_drop]
+
+	[item_drop.spooky]
+		lucky_hoof = true
+		phantom_rod = false
+		deep_sea_orb = true
+
+	[item_drop.global]
+		shredder = false
+
+[pet_drop]
+
+	[pet_drop.marina]
+		megalodon = true
+		legendary_megalodon = true
+		epic_megalodon = true
+
+	[pet_drop.global]
+		flying_fish = true
+		legendary_flying_fish = true
+		rare_flying_fish = true
+		epic_flying_fish = true
+
+	[pet_drop.jerry]
+		epic_baby_yeti = true
+		legendary_baby_yeti = true
+		baby_yeti = true
+
+	[pet_drop.water]
+		flying_fish = false
+		legendary_flying_fish = false
+		rare_flying_fish = false
+		epic_flying_fish = false
+

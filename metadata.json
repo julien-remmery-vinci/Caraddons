@@ -3,5 +3,8 @@
     "creator": "CaravaneDeGitan",
     "description": "Fishing utility",
     "version": "0.0.1",
-    "entry": "index.js"
+    "entry": "index.js",
+    "requires": [
+      "Vigilance"
+  ]
   }
