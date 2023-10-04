@@ -1,2 +1,1 @@
-#ignore .toml file extension
-.toml
+config.toml
