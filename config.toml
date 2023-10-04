@@ -73,9 +73,3 @@
 		legendary_baby_yeti = true
 		baby_yeti = true
 
-	[pet_drop.water]
-		flying_fish = false
-		legendary_flying_fish = false
-		rare_flying_fish = false
-		epic_flying_fish = false
-

@@ -1,2 +1,2 @@
-#ignore ct-dump folder and content
-ct-dumps
+#ignore .toml file extension
+.toml
