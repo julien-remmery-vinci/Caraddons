@@ -1,4 +1,5 @@
-import settings from '../config/settings.js';
+import settings from '../settings.js';
+import { clientShowTitle } from '../utils/functions.js'
 
 const outroSound = new Sound({source:"outro-sound-effect.ogg"});
 
@@ -74,10 +75,69 @@ register("chat", (rarity, MFA, event) => {
 
 
 // TROPHY FISHES NOTIFICATION
-// register("chat", (trophyFish, event) => {
-//     if(TROPHYDROP[trophyFish.substring(1)]){
-//         clientShowTitle("&bDiamond &"+trophyFish, 50, outroSound);
-//     }else{
-//         clientShowTitle("&bDiamond &"+trophyFish, 40);
-//     }
-// }).setChatCriteria("&r&6&lTROPHY FISH! &r&bYou caught a &r&${trophyFish}&r&r&r &r&l&r&b&lDIAMOND&r&b.&r").setContains();
+function trophyNotification(rarity, trophy){
+    if(rarity === 0 && settings.commonNotification) clientShowTitle(`&${trophy} &b&lDIAMOND`, 30);
+    else if(rarity === 1 && settings.rareNotification) clientShowTitle(`&${trophy} &b&lDIAMOND`, 50, outroSound);
+}
+
+register("chat", (trophyFish) => {
+    switch(trophyFish.substring(1)){
+        case "Blobfish":
+            trophyNotification(settings.blobfish, trophyFish);
+            break;
+        case "Flyfish":
+            trophyNotification(settings.flyfish, trophyFish);
+            break;
+        case "Golden Fish":
+            trophyNotification(settings.goldenFish, trophyFish);
+            break;
+        case "Gusher":
+            trophyNotification(settings.gusher, trophyFish);
+            break;
+        case "Karate Fish":
+            trophyNotification(settings.karateFish, trophyFish);
+            break;
+        case "Lavahorse":
+            trophyNotification(settings.lavahorse, trophyFish);
+            break;
+        case "Mana Ray":
+            trophyNotification(settings.manaRay, trophyFish);
+            break;
+        case "Moldfin":
+            trophyNotification(settings.moldfin, trophyFish);
+            break;
+        case "Skeleton Fish":
+            trophyNotification(settings.skeletonFish, trophyFish);
+            break;
+        case "Slugfish":
+            trophyNotification(settings.slugfish, trophyFish);
+            break;
+        case "Soul Fish":
+            trophyNotification(settings.soulFish, trophyFish);
+            break;
+        case "Steaming-Hot Flounder":
+            trophyNotification(settings.steamingHotFlounder, trophyFish);
+            break;
+        case "Sulphur Skitter":
+            trophyNotification(settings.sulphurSkitter, trophyFish);
+            break;
+        case "Vanille":
+            trophyNotification(settings.vanille, trophyFish);
+            break;
+        case "Volcanic Stonefish":
+            trophyNotification(settings.volcanicStonefish, trophyFish);
+            break;
+        case "Obfuscated 1":
+            trophyNotification(settings.obfuscatedOne, trophyFish);
+            break;
+        case "Obfuscated 2":
+            trophyNotification(settings.obfuscatedTwo, trophyFish);
+            break;
+        case "Obfuscated 3":
+            trophyNotification(settings.obfuscatedThree, trophyFish);
+            break;
+        default:
+            Chatlib.chat("&r&cCaraddons : error displaying trophy fish trophyNotification.&r")
+            break;
+    }
+}).setChatCriteria("&r&6&lTROPHY FISH! &r&bYou caught a &r&${trophyFish}&r&r&r &r&l&r&b&lDIAMOND&r&b.&r").setContains();
