@@ -197,7 +197,7 @@ class Settings {
     //TROPHY FISHING
     @SwitchProperty({
         name: 'Common Trophy Fish',
-        description: "Enable notification for 'Common Trophies' diamond",
+        description: "Enable notification for 'Common Trophies' diamond, common trophies' notification will only be displayed on the screen",
         category: 'Trophy Fishing',
         subcategory: 'Notification',
     })
@@ -205,7 +205,7 @@ class Settings {
 
     @SwitchProperty({
         name: 'Rare Trophy Fish',
-        description: "Enable notification for 'Rare Trophies' diamond, rare trophies' notification will have a cool music played",
+        description: "Enable notification for 'Rare Trophies' diamond, rare trophies' notification will also have a cool music played",
         category: 'Trophy Fishing',
         subcategory: 'Notification',
     })
@@ -235,7 +235,7 @@ class Settings {
         subcategory: 'Rarity Selection',
         options: ['Common', 'Rare'],
     })
-    flyfish = 0;
+    flyfish = 1;
 
     @SelectorProperty({
         name: 'Golden Fish',
@@ -244,7 +244,7 @@ class Settings {
         subcategory: 'Rarity Selection',
         options: ['Common', 'Rare'],
     })
-    goldenFish = 0;
+    goldenFish = 1;
 
     @SelectorProperty({
         name: 'Gusher',
@@ -262,7 +262,7 @@ class Settings {
         subcategory: 'Rarity Selection',
         options: ['Common', 'Rare'],
     })
-    karateFish = 0;
+    karateFish = 1;
 
     @SelectorProperty({
         name: 'Lavahorse',
@@ -280,7 +280,7 @@ class Settings {
         subcategory: 'Rarity Selection',
         options: ['Common', 'Rare'],
     })
-    manaRay = 0;
+    manaRay = 1;
 
     @SelectorProperty({
         name: 'Moldfin',
@@ -289,7 +289,7 @@ class Settings {
         subcategory: 'Rarity Selection',
         options: ['Common', 'Rare'],
     })
-    moldfin = 0;
+    moldfin = 1;
 
     @SelectorProperty({
         name: 'Skeleton Fish',
@@ -298,7 +298,7 @@ class Settings {
         subcategory: 'Rarity Selection',
         options: ['Common', 'Rare'],
     })
-    skeletonFish = 0;
+    skeletonFish = 1;
 
     @SelectorProperty({
         name: 'Slugfish',
@@ -307,7 +307,7 @@ class Settings {
         subcategory: 'Rarity Selection',
         options: ['Common', 'Rare'],
     })
-    slugfish = 0;
+    slugfish = 1;
 
     @SelectorProperty({
         name: 'Soul Fish',
@@ -316,7 +316,7 @@ class Settings {
         subcategory: 'Rarity Selection',
         options: ['Common', 'Rare'],
     })
-    soulFish = 0;
+    soulFish = 1;
 
     @SelectorProperty({
         name: 'Steaming-Hot Flounder',
@@ -325,7 +325,7 @@ class Settings {
         subcategory: 'Rarity Selection',
         options: ['Common', 'Rare'],
     })
-    steamingHotFlounder = 0;
+    steamingHotFlounder = 1;
 
     @SelectorProperty({
         name: 'Sulphur Skitter',
@@ -343,7 +343,7 @@ class Settings {
         subcategory: 'Rarity Selection',
         options: ['Common', 'Rare'],
     })
-    vanille = 0;
+    vanille = 1;
 
     @SelectorProperty({
         name: 'Volcanic Stonefish',
@@ -352,7 +352,7 @@ class Settings {
         subcategory: 'Rarity Selection',
         options: ['Common', 'Rare'],
     })
-    volcanicStonefish = 0;
+    volcanicStonefish = 1;
 
     @SelectorProperty({
         name: 'Obfuscated 1',
@@ -379,7 +379,7 @@ class Settings {
         subcategory: 'Rarity Selection',
         options: ['Common', 'Rare'],
     })
-    obfuscatedThree = 0;
+    obfuscatedThree = 1;
 }
 
 export default new Settings();

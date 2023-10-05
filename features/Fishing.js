@@ -140,4 +140,4 @@ register("chat", (trophyFish) => {
             Chatlib.chat("&r&cCaraddons : error displaying trophy fish trophyNotification.&r")
             break;
     }
-}).setChatCriteria("&r&6&lTROPHY FISH! &r&bYou caught a &r&${trophyFish}&r&r&r &r&l&r&b&lDIAMOND&r&b.&r").setContains();
+}).setChatCriteria("&r&6&lTROPHY FISH! &r&bYou caught a &r&${trophyFish}&r&r&r &r&l&r&b&lDIAMOND&r&b.&r");
