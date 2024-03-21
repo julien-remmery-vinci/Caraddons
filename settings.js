@@ -193,6 +193,25 @@ class Settings {
     })
     shredder = false;
 
+    @SwitchProperty({
+        name: 'Lucky Clover Core',
+        description: 'Sends the item drop message into party chat',
+        category: 'Item drop',
+        subcategory: 'Global',
+        placeholder: 'Activate',
+    })
+    lucky_clover_core = false;
+
+    //GLOBAL LAVA DROPS
+    @SwitchProperty({
+        name: 'Radioactive vial',
+        description: 'Sends the item drop message into party chat',
+        category: 'Item drop',
+        subcategory: 'Global',
+        placeholder: 'Activate',
+    })
+    radioactive_vial = false;
+
 
     //TROPHY FISHING
     @SwitchProperty({
